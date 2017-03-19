@@ -1,0 +1,83 @@
+<div class="row">
+	<div class="col-sm-12">
+		<form class="form-inline">
+			<div class="form-group">
+				<label for="email">Email address:</label>
+				<input type="email" class="form-control" id="email" [(ngModel)]="user.email" >
+			</div>
+			<div class="form-group">
+			<label for="contact">Contact:</label>
+				<input type="text" class="form-control" id="contact" [(ngModel)]="user.contact">
+			</div>
+			<div class="form-group">
+			<label for="Address">Address:</label>
+				<input type="text" class="form-control" id="Address" [(ngModel)]="user.address">
+			</div>
+			
+			<button type="submit" class="btn btn-primary"  (click)="PostDetails(user)">Submit</button>
+		</form>
+	</div>
+</div>
+<div class="row" *ngIf="showlist">
+	<div class="col-sm-12">
+		<table class="table table-responsive">
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>Contact</th>
+					<th>Address</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="#contact of contacts;#i=index">
+					<td>{{contact.email}}</td>
+					<td>{{contact.contact}}</td>
+					<td>{{contact.address}}</td>
+					<td><button class="btn btn-info" (click)="Editfun(i)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+					<td><button class="btn btn-danger" (click)="deleteItem(i)"><span class="glyphicon glyphicon-trash" ></span></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div> 
+<div class="row" *ngIf="Editvalue">
+	<div class="col-sm-12">
+		<form class="form-inline">
+		<div class="form-group">
+				<label for="email">#</label>
+				<label>{{userid}}</label>
+				<input type="text" name="text" [(ngModel)]="userid" disabled>
+			</div>
+			<div class="form-group">
+				<label for="email">Email address:</label>
+				<input type="email" class="form-control" id="email" [(ngModel)]="user1.email" >
+			</div>
+			<div class="form-group">
+			<label for="contact">Contact:</label>
+				<input type="text" class="form-control" id="contact" [(ngModel)]="user1.contact">
+			</div>
+			<div class="form-group">
+			<label for="Address">Address:</label>
+				<input type="text" class="form-control" id="Address" [(ngModel)]="user1.address">
+			</div>
+			
+			<button type="submit" class="btn btn-primary"  (click)="Update(user1,userid)">Update</button>
+		</form>
+	</div>
+</div>
+
+<!-- <div class="row">
+	<table>
+        <thead>
+            <th>List Items</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="#list of listitems">
+                <td>{{list}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>  -->
